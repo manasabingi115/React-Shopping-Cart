@@ -2,3 +2,26 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+#input {
+  border: 1px solid green;
+  width: 400px;
+  height: 35px;
+  border-radius: 4px;
+  font-size: 17px;
+  padding-left: 20px;
+}
+button {
+  height: 39px;
+  color: white;
+  background-color: green;
+  border: none;
+  width: 100px;
+  margin-left: -10px;
+  font-size: 17px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
