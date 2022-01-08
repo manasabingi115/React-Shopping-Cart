@@ -8,7 +8,7 @@ export default function App() {
 
   const Submit = (e) => {
     e.preventDefault();
-    console.log(data[0].name);
+    // console.log(data[1].image[0].url);
     return fetch(
       "https://res.cloudinary.com/bodevone/raw/upload/v1587201304/products.json"
     )
@@ -40,7 +40,7 @@ export default function App() {
           src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png"
         ></img>
       </div>
-      <Card />
+      <Card data={data} key={data.id} />
     </div>
   );
 }
