@@ -1,30 +1,46 @@
 import "./styles.css";
 import React from "react";
-// import { GiPoliceBadge } from "react-icons/gi";
+import Card from "./card";
 
 export default function App() {
   const [search, setSearch] = React.useState([]);
+  const [data, setData] = React.useState([]);
+
+  const Submit = (e) => {
+    e.preventDefault();
+    console.log(data[0].name);
+    return fetch(
+      "https://res.cloudinary.com/bodevone/raw/upload/v1587201304/products.json"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      });
+  };
   return (
     <div className="App">
-      {/* <GiPoliceBadge />  */}
-      <form>
-        <div className="header">
-          <h1 style={{ color: "green" }}>Veggy</h1>
-          <div>
+      <div className="header">
+        <h1 style={{ color: "green" }}>Veggy</h1>
+        <div>
+          <form onSubmit={Submit}>
             <input
+              type="text"
               value={search}
-              id="input"
+              className="input"
               placeholder="Search for vegetables, fruits, nuts"
               onChange={(e) => setSearch(e.target.value)}
             ></input>
-            <button>search</button>
-          </div>
-          <img
-            alt="{value.toString()}"
-            src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png"
-          ></img>
+            <button type="submit" value="search">
+              search
+            </button>
+          </form>
         </div>
-      </form>
+        <img
+          alt="{value.toString()}"
+          src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png"
+        ></img>
+      </div>
+      <Card />
     </div>
   );
 }
