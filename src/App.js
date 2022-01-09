@@ -33,16 +33,38 @@ export default function App() {
               placeholder="Search for vegetables, fruits, nuts"
               onChange={(e) => setSearch(e.target.value)}
             ></input>
-            <button type="submit" value="search">
+            <button className="search-button" type="submit" value="search">
               search
             </button>
           </form>
         </div>
-        <img
-          alt="{value.toString()}"
-          src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png"
-        ></img>
+        <div className="cart-container">
+          <div className="cart" style={{ color: "white" }}>
+            0
+          </div>
+          <img
+            className="cart-img"
+            alt="{value.toString()}"
+            src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png"
+          ></img>
+        </div>
       </div>
+      <div className="filter-buttons">
+        <button className="all" type="submit" value="search">
+          All
+        </button>
+        <button className="vegetables" type="submit" value="search">
+          Vegetables
+        </button>
+        <button className="fruits" type="submit" value="search">
+          Fruits
+        </button>
+        <button className="nuts" type="submit" value="search">
+          Nuts
+        </button>
+      </div>
+      <br />
+      <br />
       <CardsComponent data={data} key={data.id} value={search} />
     </div>
   );
