@@ -7,8 +7,6 @@ import {
 } from "mdb-react-ui-kit";
 
 export default function Card({ data }) {
-  // console.log(data);
-
   return (
     <div>
       <MDBCard
