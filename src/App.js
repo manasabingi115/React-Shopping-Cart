@@ -7,6 +7,7 @@ import Card from "./Card";
 export default function App() {
   const [search, setSearch] = React.useState([]);
   const [data, setData] = React.useState([]);
+  // const [category, setCategory] = React.useState("");
 
   const Submit = (e) => {
     e.preventDefault();
@@ -21,16 +22,27 @@ export default function App() {
         setData(data);
       });
   };
-  const shoot = () => {
-    alert("Great Shot!");
+  const shoot = (a) => {
+    alert(a);
+    console.log(a);
   };
+  // let aboutCategory = "";
+  // if (category === "vegetable") {
+  //   aboutCategory = "vegetable";
+  // }
+  // // else if (category === "nuts") {
+  // //   aboutCategory = "nuts";
+  // // }
+  // else {
+  //   aboutCategory = "nuts";
+  // }
 
   const veg = ({ data }) => {
     data
       .filter((data) => data.category.name.includes("vegetable"))
       .map((data, index) => (
         <div className="col-md-5" key={index}>
-          {console.log(data.category.name)}
+          {console.log(data)}
           <Card data={data} />
         </div>
       ));
@@ -70,7 +82,7 @@ export default function App() {
           All
         </button>
         <button
-          onClick={veg}
+          onClick={() => veg({ data })}
           className="vegetables"
           type="submit"
           value="search"
@@ -81,13 +93,18 @@ export default function App() {
           Fruits
         </button>
 
-        <button onClick={shoot} className="nuts" type="submit" value="search">
+        <button
+          onClick={() => shoot({ data })}
+          className="nuts"
+          type="submit"
+          value="search"
+        >
           Nuts
         </button>
       </div>
       <br />
       <br />
-      <CardsComponent data={data} key={data.id} value={search} />
+      {/* <CardsComponent data={data} key={data.id} value={search} /> */}
       <Items data={data} />
     </div>
   );

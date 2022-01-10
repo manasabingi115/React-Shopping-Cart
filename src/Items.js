@@ -61,7 +61,7 @@ export default function Items({ data }) {
   );
 }
 
-const shoot = () => {
-  alert("Great Shot!");
-  console.log("nuts");
-};
+// const shoot = () => {
+//   alert("Great Shot!");
+//   console.log("nuts");
+// };
