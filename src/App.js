@@ -1,6 +1,8 @@
 import "./styles.css";
 import React from "react";
 import CardsComponent from "./Cards-component";
+import Items from "./Items";
+import Card from "./Card";
 
 export default function App() {
   const [search, setSearch] = React.useState([]);
@@ -18,6 +20,20 @@ export default function App() {
       .then((data) => {
         setData(data);
       });
+  };
+  const shoot = () => {
+    alert("Great Shot!");
+  };
+
+  const veg = ({ data }) => {
+    data
+      .filter((data) => data.category.name.includes("vegetable"))
+      .map((data, index) => (
+        <div className="col-md-5" key={index}>
+          {console.log(data.category.name)}
+          <Card data={data} />
+        </div>
+      ));
   };
 
   return (
@@ -53,19 +69,26 @@ export default function App() {
         <button className="all" type="submit" value="search">
           All
         </button>
-        <button className="vegetables" type="submit" value="search">
+        <button
+          onClick={veg}
+          className="vegetables"
+          type="submit"
+          value="search"
+        >
           Vegetables
         </button>
         <button className="fruits" type="submit" value="search">
           Fruits
         </button>
-        <button className="nuts" type="submit" value="search">
+
+        <button onClick={shoot} className="nuts" type="submit" value="search">
           Nuts
         </button>
       </div>
       <br />
       <br />
       <CardsComponent data={data} key={data.id} value={search} />
+      <Items data={data} />
     </div>
   );
 }

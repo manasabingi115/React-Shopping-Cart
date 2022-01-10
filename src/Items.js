@@ -5,7 +5,8 @@ export default function Items({ data }) {
   function Nuts({ data }) {
     return (
       <div>
-        <div className="row">
+        Hello
+        {/* <div className="row">
           {data
             .filter((data) => data.category.name.includes("nuts"))
             .map((data, index) => (
@@ -14,7 +15,7 @@ export default function Items({ data }) {
                 <Card data={data} />
               </div>
             ))}
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -59,3 +60,8 @@ export default function Items({ data }) {
     </div>
   );
 }
+
+const shoot = () => {
+  alert("Great Shot!");
+  console.log("nuts");
+};
