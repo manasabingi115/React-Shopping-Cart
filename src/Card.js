@@ -8,6 +8,7 @@ import {
 
 export default function Card({ data }) {
   const [buttonValue, setButtonValue] = React.useState("ADD TO CART");
+  const [exchange, setExchange] = React.useState(<Button />);
   const [count, setCount] = React.useState(1);
 
   function Add() {
@@ -17,14 +18,6 @@ export default function Card({ data }) {
   function Substract() {
     setCount(count - 1);
   }
-
-  const manu = () => {
-    if (buttonValue === "ADD TO CART") {
-      setButtonValue("changing value");
-    } else if (buttonValue === "changing value") {
-      setButtonValue("ADD TO CART");
-    }
-  };
 
   function ChangingButton() {
     return (
@@ -41,7 +34,35 @@ export default function Card({ data }) {
       </div>
     );
   }
-  // if(changeButton===changing integer)
+
+  // const manu = () => {
+  //   if (buttonValue === "ADD TO CART") {
+  //     setButtonValue("changing value");
+  //   } else if (buttonValue === "changing value") {
+  //     setButtonValue("ADD TO CART");
+  //   }
+  // };
+  const manu = () => {
+    if (exchange === <Button />) {
+      setExchange(<ChangingButton />);
+    } else if (exchange === <ChangingButton />) {
+      setExchange(<Button />);
+    }
+  };
+
+  function Button() {
+    return (
+      <div>
+        <button
+          onClick={manu}
+          style={{ width: "170px" }}
+          className="btn btn-primary {buttonValue}"
+        >
+          {buttonValue}
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -64,13 +85,15 @@ export default function Card({ data }) {
           <h2>${data.price}</h2>
           <center>
             <div>
-              <button
+              {/* <button
                 onClick={manu}
                 style={{ width: "170px" }}
                 className="btn btn-primary {buttonValue}"
               >
                 {buttonValue}
-              </button>
+              </button> */}
+              {exchange}
+              {/* <Button /> */}
             </div>
             <ChangingButton />
           </center>
