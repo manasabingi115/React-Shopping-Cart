@@ -49,7 +49,9 @@ export default function App() {
           ></img>
         </div>
       </div>
-      <CardsComponent data={data} key={data.id} value={search} />
+      <center>
+        <CardsComponent data={data} key={data.id} value={search} />
+      </center>
     </div>
   );
 }

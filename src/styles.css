@@ -61,3 +61,25 @@ button {
 .cart-container {
   display: flex;
 }
+.inside-cart-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.substraction,
+.addition,
+.number {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.substraction,
+.addition {
+  font-size: 30px;
+  border-radius: 100%;
+  border: 1px solid black;
+}

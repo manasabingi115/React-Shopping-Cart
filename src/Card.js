@@ -8,6 +8,15 @@ import {
 
 export default function Card({ data }) {
   const [buttonValue, setButtonValue] = React.useState("ADD TO CART");
+  const [count, setCount] = React.useState(1);
+
+  function Add() {
+    setCount(count + 1);
+  }
+
+  function Substract() {
+    setCount(count - 1);
+  }
 
   const manu = () => {
     if (buttonValue === "ADD TO CART") {
@@ -19,12 +28,16 @@ export default function Card({ data }) {
 
   function ChangingButton() {
     return (
-      <div>
-        <p style={{ width: "10px", height: "10px" }}>-</p>
-        <p>
-          <span>1</span>
+      <div className="inside-cart-button">
+        <p onClick={Substract} className="substraction">
+          -
         </p>
-        <p>+</p>
+        <p className="number">
+          <span>{count}</span>
+        </p>
+        <p onClick={Add} className="addition">
+          +
+        </p>
       </div>
     );
   }
@@ -50,13 +63,15 @@ export default function Card({ data }) {
           <MDBCardText>{data.quantity_type.name}</MDBCardText>
           <h2>${data.price}</h2>
           <center>
-            <button
-              onClick={manu}
-              style={{ width: "170px" }}
-              className="btn btn-primary"
-            >
-              {buttonValue}
-            </button>
+            <div>
+              <button
+                onClick={manu}
+                style={{ width: "170px" }}
+                className="btn btn-primary {buttonValue}"
+              >
+                {buttonValue}
+              </button>
+            </div>
             <ChangingButton />
           </center>
         </MDBCardBody>
