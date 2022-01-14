@@ -7,8 +7,8 @@ import {
 } from "mdb-react-ui-kit";
 
 export default function Card({ data }) {
-  const [buttonValue, setButtonValue] = React.useState("ADD TO CART");
-  const [exchange, setExchange] = React.useState(<Button />);
+  const [buttonValue, setButtonValue] = React.useState(true);
+  // const [exchange, setExchange] = React.useState(<Button />);
   const [count, setCount] = React.useState(1);
 
   function Add() {
@@ -42,23 +42,29 @@ export default function Card({ data }) {
   //     setButtonValue("ADD TO CART");
   //   }
   // };
-  const manu = () => {
-    if (exchange === <Button />) {
-      setExchange(<ChangingButton />);
-    } else if (exchange === <ChangingButton />) {
-      setExchange(<Button />);
-    }
-  };
+  // const manu = () => {
+  //   if (exchange === <Button />) {
+  //     setExchange(<ChangingButton />);
+  //   } else if (exchange === <ChangingButton />) {
+  //     setExchange(<Button />);
+  //   }
+  // };
 
+  const boolean = () => {
+    setButtonValue(false);
+    // alert("HI");
+    console.log(buttonValue);
+  };
   function Button() {
     return (
       <div>
         <button
-          onClick={manu}
+          onClick={boolean}
           style={{ width: "170px" }}
           className="btn btn-primary {buttonValue}"
         >
-          {buttonValue}
+          {/* {buttonValue} */}
+          ADD TO CART
         </button>
       </div>
     );
@@ -92,10 +98,10 @@ export default function Card({ data }) {
               >
                 {buttonValue}
               </button> */}
-              {exchange}
-              {/* <Button /> */}
+              {/* {exchange} */}
+              {buttonValue ? <Button /> : <ChangingButton />}
             </div>
-            <ChangingButton />
+            {/* <ChangingButton /> */}
           </center>
         </MDBCardBody>
       </MDBCard>
