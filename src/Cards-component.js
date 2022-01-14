@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-export default function CardsComponent({ data }, { value }) {
+export default function CardsComponent({ data }) {
   const [filterValue, setFilteredValue] = React.useState("");
 
   console.log(filterValue);
@@ -11,6 +11,16 @@ export default function CardsComponent({ data }, { value }) {
       (element) => element.category.name === filterValue
     );
   }
+
+  // React.useEffect(() => {
+  //   const render = () => {
+  //     filteredData.map((data, index) => (
+  //       <div className="col-md-5">
+  //         <Card data={data} key={data.id} />
+  //       </div>
+  //     ));
+  //   };
+  // }, [filterValue]);
 
   return (
     <div>
@@ -52,9 +62,9 @@ export default function CardsComponent({ data }, { value }) {
       <br />
       <br />
       <div className="row">
-        {filteredData.map((data, index) => (
-          <div className="col-md-5" key={index}>
-            <Card data={data} />
+        {filteredData.map((data) => (
+          <div className="col-md-5">
+            <Card data={data} key={data.id} />
           </div>
         ))}
       </div>

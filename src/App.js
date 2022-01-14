@@ -1,10 +1,12 @@
 import "./styles.css";
 import React from "react";
 import CardsComponent from "./Cards-component";
+// import Card from "./Card";
 
 export default function App() {
   const [search, setSearch] = React.useState([]);
   const [data, setData] = React.useState([]);
+  // const [cartCount, setCartCount] = React.useState(0);
 
   const Submit = (e) => {
     e.preventDefault();
@@ -40,7 +42,7 @@ export default function App() {
         </div>
         <div className="cart-container">
           <div className="cart" style={{ color: "white" }}>
-            0
+            {/* {cartCount} */}0
           </div>
           <img
             className="cart-img"
