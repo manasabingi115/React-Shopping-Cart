@@ -1,17 +1,8 @@
 import React from "react";
-import { MDBCard, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
 
-export default function Card({ data }) {
+export default function Card({ data, addToCart }) {
   const [buttonValue, setButtonValue] = React.useState(true);
   const [count, setCount] = React.useState(1);
-  const [cartcount, setCartcount] = React.useState(0);
-
-  // React.useEffect(() => {
-  //   if (buttonValue === true) {
-  //     setCartcount(cartcount + 1);
-  //   }
-  //   console.log(cartcount);
-  // });
 
   function Add() {
     setCount(count + 1);
@@ -43,6 +34,7 @@ export default function Card({ data }) {
 
   const boolean = () => {
     setButtonValue(false);
+    addToCart(data);
   };
   function Button() {
     return (
@@ -75,31 +67,32 @@ export default function Card({ data }) {
       </div>
     );
   }
-
+  //return <div>Something</div>
   return (
-    <div>
-      <MDBCard
-        style={{
-          maxWidth: "13rem",
-          minHeight: "25rem",
-          padding: "5px"
-        }}
-      >
-        <MDBCardImage
-          style={{ maxWidth: "13rem", minHeight: "10rem" }}
-          src={data.image[0].url}
-          position="top"
-          alt="Fissure in Sandstone"
-        />
-        <MDBCardBody>
-          <h3 style={{ color: "rgb(95, 95, 95)" }}>{data.name}</h3>
-          {buttonValue ? <Quantity /> : <p style={{ color: "white" }}>price</p>}
+    <div className="card ">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src={data.image[0].url} alt="image1" />
+        </figure>
+      </div>
+      <div className="card-content has-text-centered">
+        <div class="media-content">
+          <p class="title is-4">{data.name}</p>
           <Price />
-          <center>
-            <div>{buttonValue ? <Button /> : <ChangingButton />}</div>
-          </center>
-        </MDBCardBody>
-      </MDBCard>
+          <p class="subtitle is-6">
+            {buttonValue ? (
+              <Quantity />
+            ) : (
+              <p style={{ color: "white" }}>price</p>
+            )}
+          </p>
+          <div>{buttonValue ? <Button /> : <ChangingButton />}</div>
+        </div>
+      </div>
+
+      <div>
+        <center></center>
+      </div>
     </div>
   );
 }

@@ -1,19 +1,26 @@
 import "./styles.css";
 import React from "react";
 import CardsComponent from "./Cards-component";
-// import Card from "./Card";
+import Cart from "./Cart";
 
 export default function App() {
   const [search, setSearch] = React.useState([]);
   const [data, setData] = React.useState([]);
-  // const [cartCount, setCartCount] = React.useState(0);
+  const [cartItems, setCartItems] = React.useState([]);
+  const [showCart, setShowCart] = React.useState(false);
+
+  const addToCart = (item) => {
+    const newCartItems = [...cartItems, item];
+    setCartItems(newCartItems);
+  };
+
+  React.useEffect(() => {
+    Submit();
+  }, []);
 
   const Submit = (e) => {
-    e.preventDefault();
-    console.log(data);
-    console.log(search);
-
-    return fetch(
+    e?.preventDefault();
+    fetch(
       "https://res.cloudinary.com/bodevone/raw/upload/v1587201304/products.json"
     )
       .then((response) => response.json())
@@ -23,7 +30,7 @@ export default function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App container">
       <div className="header">
         <h1 style={{ color: "green" }}>Veggy</h1>
         <div>
@@ -40,10 +47,10 @@ export default function App() {
             </button>
           </form>
         </div>
-        <div className="cart-container">
-          <div className="cart" style={{ color: "white" }}>
-            {/* {cartCount} */}0
-          </div>
+        <div className="cart-container" onClick={() => setShowCart(!showCart)}>
+          <span className="cart" style={{ color: "white" }}>
+            {cartItems.length}
+          </span>
           <img
             className="cart-img"
             alt="{value.toString()}"
@@ -51,9 +58,17 @@ export default function App() {
           ></img>
         </div>
       </div>
-      <center>
-        <CardsComponent data={data} key={data.id} value={search} />
-      </center>
+      <br />
+      {showCart ? (
+        <Cart cartItems={cartItems} />
+      ) : (
+        <CardsComponent
+          data={data}
+          key={data.id}
+          value={search}
+          addToCart={addToCart}
+        />
+      )}
     </div>
   );
 }

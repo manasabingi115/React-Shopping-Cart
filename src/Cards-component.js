@@ -1,26 +1,15 @@
 import React from "react";
 import Card from "./Card";
 
-export default function CardsComponent({ data }) {
+export default function CardsComponent({ data, addToCart }) {
   const [filterValue, setFilteredValue] = React.useState("");
 
-  console.log(filterValue);
   let filteredData = data;
   if (filterValue) {
     filteredData = data.filter(
       (element) => element.category.name === filterValue
     );
   }
-
-  // React.useEffect(() => {
-  //   const render = () => {
-  //     filteredData.map((data, index) => (
-  //       <div className="col-md-5">
-  //         <Card data={data} key={data.id} />
-  //       </div>
-  //     ));
-  //   };
-  // }, [filterValue]);
 
   return (
     <div>
@@ -61,10 +50,13 @@ export default function CardsComponent({ data }) {
       </div>
       <br />
       <br />
-      <div className="row">
+      <div className="columns is-multiline">
         {filteredData.map((data) => (
-          <div className="col-md-5">
-            <Card data={data} key={data.id} />
+          <div
+            className="column is-one-third is-flex is-justify-content-space-around"
+            key={data.id}
+          >
+            <Card data={data} key={data.id} addToCart={addToCart} />
           </div>
         ))}
       </div>

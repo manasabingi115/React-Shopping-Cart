@@ -1,3 +1,5 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
 body {
   display: flex;
   align-items: center;
@@ -5,10 +7,12 @@ body {
 }
 .App {
   font-family: sans-serif;
-  min-width: 900px;
-  /* background-color: yellow; */
+  /* background-color: rgb(228, 227, 227); */
 }
-
+.card {
+  max-width: 300px;
+  width: 300px;
+}
 .input {
   border: 1px solid green;
   width: 400px;
@@ -28,10 +32,27 @@ button {
 }
 .vegetable {
   width: 140px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+.fruit {
+  margin-right: 12px;
+}
+.all {
+  width: 60px;
+}
+.vegetable,
+.fruit,
+.nuts,
+.all {
+  border-radius: 10px;
 }
 .filter-buttons {
-  background-color: skyblue;
-  max-width: 750px;
+  /* background-color: skyblue; */
+  display: flex;
+  justify-content: center;
+  /* max-width: 750px; */
+  margin-right: -160px;
 }
 .search-button {
   margin-left: -10px;
@@ -40,6 +61,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: white;
+  min-width: 900px;
 }
 .cart {
   height: 23px;
@@ -66,6 +89,18 @@ button {
   justify-content: center;
   margin-top: -10px;
 }
+
+.item-image:hover {
+  transform: scale(1.1);
+}
+
+.item-image {
+  cursor: zoom-in;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in;
+}
+
 .substraction,
 .addition,
 .number {
@@ -96,6 +131,14 @@ button {
 }
 .addition {
   font-size: 25px;
+}
+.substraction:hover {
+  border: 1px solid green;
+  color: green;
+}
+.addition:hover {
+  border: 1px solid green;
+  color: green;
 }
 .substraction:active {
   background-color: rgb(8, 197, 8);
