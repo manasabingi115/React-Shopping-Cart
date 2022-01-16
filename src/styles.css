@@ -64,6 +64,9 @@ button {
   background-color: white;
   min-width: 900px;
 }
+.cart-container {
+  display: flex;
+}
 .cart {
   height: 23px;
   width: 23px;
@@ -76,29 +79,24 @@ button {
   z-index: 2;
 }
 .cart-img {
-  position: relative;
-  margin-left: -40px;
+  position: absolute;
+  margin-left: -21px;
   z-index: 1;
 }
-.cart-container {
-  display: flex;
-}
+
 .inside-cart-button {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: -10px;
 }
-
-.item-image:hover {
-  transform: scale(1.1);
-}
-
 .item-image {
   cursor: zoom-in;
-  width: 100%;
-  height: auto;
   transition: transform 0.3s ease-in;
+}
+
+.item-image:hover {
+  transform: scale(0.9);
 }
 
 .substraction,

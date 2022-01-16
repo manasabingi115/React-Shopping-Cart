@@ -70,28 +70,24 @@ export default function Card({ data, addToCart }) {
   //return <div>Something</div>
   return (
     <div className="card ">
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img src={data.image[0].url} alt="image1" />
+      <div className="card-image">
+        <figure className="image is-4by3">
+          <img src={data.image[0].url} className="item-image" alt="image1" />
         </figure>
       </div>
       <div className="card-content has-text-centered">
-        <div class="media-content">
-          <p class="title is-4">{data.name}</p>
+        <div className="media-content">
+          <p className="title is-4">{data.name}</p>
           <Price />
-          <p class="subtitle is-6">
+          <h4 className="subtitle is-6">
             {buttonValue ? (
               <Quantity />
             ) : (
               <p style={{ color: "white" }}>price</p>
             )}
-          </p>
+          </h4>
           <div>{buttonValue ? <Button /> : <ChangingButton />}</div>
         </div>
-      </div>
-
-      <div>
-        <center></center>
       </div>
     </div>
   );
