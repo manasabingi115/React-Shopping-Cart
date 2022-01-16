@@ -42,7 +42,7 @@ export default function Card({ data, addToCart }) {
         <button
           onClick={boolean}
           style={{ width: "170px" }}
-          className="btn btn-primary {buttonValue}"
+          className="btn btn-primary "
         >
           ADD TO CART
         </button>
