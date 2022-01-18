@@ -56,7 +56,12 @@ export default function CardsComponent({ data, addToCart }) {
             className="column is-one-third is-flex is-justify-content-space-around"
             key={data.id}
           >
-            <Card data={data} key={data.id} addToCart={addToCart} />
+            <Card
+              data={data}
+              key={data.id}
+              addToCart={addToCart}
+              unChange={true}
+            />
           </div>
         ))}
       </div>

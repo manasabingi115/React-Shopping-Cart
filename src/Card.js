@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Card({ data, addToCart }) {
+export default function Card({ data, addToCart, unChange }) {
   const [buttonValue, setButtonValue] = React.useState(true);
   const [count, setCount] = React.useState(1);
 
@@ -86,7 +86,9 @@ export default function Card({ data, addToCart }) {
               <p style={{ color: "white" }}>price</p>
             )}
           </h4>
-          <div>{buttonValue ? <Button /> : <ChangingButton />}</div>
+          {unChange && (
+            <div>{buttonValue ? <Button /> : <ChangingButton />}</div>
+          )}
         </div>
       </div>
     </div>
