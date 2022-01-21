@@ -4,11 +4,16 @@ export default function Card({ data, addToCart }) {
   const [buttonValue, setButtonValue] = React.useState(true);
 
   function Add() {
-    addToCart(data.id, (data.addedCount || 0) + 1);
+    // if (data.quantity === "1") {
+    addToCart(data.id, (data.addedCount || 0) + data.quantity);
+    // } else if (data.quantity === "0.5") {
+    // addToCart(data.id, (data.addedCount || 0) + 0.5);
+    // }
   }
+  // console.log(data[0].quantity);
 
   function Substract() {
-    addToCart(data.id, (data.addedCount || 0) - 1);
+    addToCart(data.id, (data.addedCount || 0) - data.quantity);
     console.log(data.addedCount);
     if (data.addedCount === 0) {
       setButtonValue(true);
@@ -65,7 +70,13 @@ export default function Card({ data, addToCart }) {
     const amount = data.price;
     return (
       <div>
-        <h2 style={{ color: "rgb(95, 95, 95)" }}>
+        <h2
+          style={{
+            color: "rgb(95, 95, 95)",
+            fontSize: "25px",
+            fontWeight: "bold"
+          }}
+        >
           ${amount * (data.addedCount || data.quantity)}
         </h2>
       </div>
@@ -82,6 +93,7 @@ export default function Card({ data, addToCart }) {
         <div className="media-content">
           <p className="title is-4">{data.name}</p>
           <Price />
+          <br />
           <h4 className="subtitle is-6">
             {buttonValue ? (
               <Quantity />

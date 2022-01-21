@@ -13,6 +13,21 @@ export default function Cart({ cartItems, addToCart }) {
           </div>
         ))}
       </div>
+      {cartItems.length > 0 && (
+        <button
+          className="checkout"
+          style={{
+            width: "85%",
+            height: "50px",
+            marginLeft: "60px",
+            backgroundColor: "rgb(252, 123, 36)",
+            fontSize: "20px"
+          }}
+          onClick={() => alert("Checkout procedure")}
+        >
+          CHECKOUT
+        </button>
+      )}
     </div>
   );
 }

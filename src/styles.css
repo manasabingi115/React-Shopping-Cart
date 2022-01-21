@@ -63,6 +63,7 @@ button {
   justify-content: space-evenly;
   background-color: white;
   min-width: 900px;
+  padding-bottom: 30px;
 }
 .cart-container {
   display: flex;
@@ -71,7 +72,7 @@ button {
   height: 23px;
   width: 23px;
   border-radius: 100%;
-  background-color: darkorange;
+  background-color: rgb(252, 123, 36);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,4 +147,9 @@ button {
 .addition:active {
   background-color: rgb(8, 197, 8);
   color: white;
+}
+.checkout {
+  width: "90%";
+  height: "50px";
+  margin-left: "60px";
 }
