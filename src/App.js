@@ -9,6 +9,15 @@ export default function App() {
   const [cartItems, setCartItems] = React.useState([]);
   const [showCart, setShowCart] = React.useState(false);
 
+  let searchData = { data };
+  searchData = data.filter((val) => {
+    if (search === "") {
+      return val;
+    } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
+      return val;
+    }
+  });
+
   const addToCart = (item) => {
     const newCartItems = [...cartItems, item];
     setCartItems(newCartItems);
