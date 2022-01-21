@@ -62,17 +62,12 @@ export default function CardsComponent({ data, addToCart, search }) {
       <br />
       <br />
       <div className="columns is-multiline">
-        {(filteredData, searchData).map((data) => (
+        {filteredData.map((data) => (
           <div
             className="column is-one-third is-flex is-justify-content-space-around"
             key={data.id}
           >
-            <Card
-              data={data}
-              key={data.id}
-              addToCart={addToCart}
-              unChange={true}
-            />
+            <Card data={data} key={data.id} addToCart={addToCart} />
           </div>
         ))}
       </div>

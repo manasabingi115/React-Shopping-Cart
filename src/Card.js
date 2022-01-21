@@ -1,18 +1,18 @@
 import React from "react";
 
-export default function Card({ data, addToCart, unChange }) {
+export default function Card({ data, addToCart }) {
   const [buttonValue, setButtonValue] = React.useState(true);
-  const [count, setCount] = React.useState(1);
 
   function Add() {
-    setCount(count + 1);
+    addToCart(data.id, (data.addedCount || 0) + 1);
   }
 
   function Substract() {
-    if (count === 1) {
+    addToCart(data.id, (data.addedCount || 0) - 1);
+    console.log(data.addedCount);
+    if (data.addedCount === 0) {
       setButtonValue(true);
     } else {
-      setCount(count - 1);
     }
   }
 
@@ -34,7 +34,7 @@ export default function Card({ data, addToCart, unChange }) {
 
   const boolean = () => {
     setButtonValue(false);
-    addToCart(data);
+    addToCart(data.id, data.addedCount || 1);
   };
   function Button() {
     return (
@@ -54,7 +54,9 @@ export default function Card({ data, addToCart, unChange }) {
     return (
       <p style={{ color: "rgb(95, 95, 95)" }}>
         {" "}
-        <span style={{ paddingRight: "6px" }}>{count}</span>
+        <span style={{ paddingRight: "6px" }}>
+          {data.addedCount || data.quantity}
+        </span>
         {data.quantity_type.name}
       </p>
     );
@@ -63,11 +65,12 @@ export default function Card({ data, addToCart, unChange }) {
     const amount = data.price;
     return (
       <div>
-        <h2 style={{ color: "rgb(95, 95, 95)" }}>${amount * count}</h2>
+        <h2 style={{ color: "rgb(95, 95, 95)" }}>
+          ${amount * (data.addedCount || data.quantity)}
+        </h2>
       </div>
     );
   }
-  //return <div>Something</div>
   return (
     <div className="card ">
       <div className="card-image">
@@ -86,9 +89,7 @@ export default function Card({ data, addToCart, unChange }) {
               <p style={{ color: "white" }}>price</p>
             )}
           </h4>
-          {unChange && (
-            <div>{buttonValue ? <Button /> : <ChangingButton />}</div>
-          )}
+          {<div>{data.addedCount ? <ChangingButton /> : <Button />}</div>}
         </div>
       </div>
     </div>

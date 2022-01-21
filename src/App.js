@@ -6,16 +6,14 @@ import Cart from "./Cart";
 export default function App() {
   const [search, setSearch] = React.useState("");
   const [data, setData] = React.useState([]);
-  const [cartItems, setCartItems] = React.useState([]);
   const [showCart, setShowCart] = React.useState(false);
 
-  // React.useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
-
-  const addToCart = (item) => {
-    const newCartItems = [...cartItems, item];
-    setCartItems(newCartItems);
+  const addToCart = (id, count) => {
+    const newData = [...data];
+    const addedItemId = data.findIndex((el) => el.id === id);
+    newData[addedItemId].addedCount = count;
+    setData(newData);
+    console.log(newData);
   };
 
   React.useEffect(() => {
@@ -33,16 +31,22 @@ export default function App() {
       });
   };
 
+  const cartItems = data.filter((el) => Boolean(el.addedCount));
+
   return (
     <div className="App container">
       <div className="header">
-        <h1 style={{ color: "green", fontSize: "40px", fontWeight: "bolder" }}>
+        <h1
+          style={{ color: "green", fontSize: "40px", fontWeight: "bolder" }}
+          onClick={() => setShowCart(false)}
+        >
           Veggy
         </h1>
         <div>
           <form onSubmit={Submit}>
             <input
               type="text"
+              key={data.id}
               value={search}
               className="input"
               placeholder="Search for vegetable, fruit, nuts"
@@ -53,7 +57,7 @@ export default function App() {
             </button>
           </form>
         </div>
-        <div className="cart-container" onClick={() => setShowCart(!showCart)}>
+        <div className="cart-container" onClick={() => setShowCart(true)}>
           <span className="cart" style={{ color: "white" }}>
             {cartItems.length}
           </span>
@@ -66,7 +70,7 @@ export default function App() {
       </div>
       <br />
       {showCart ? (
-        <Cart cartItems={cartItems} />
+        <Cart cartItems={cartItems} addToCart={addToCart} />
       ) : (
         <CardsComponent
           data={data}
