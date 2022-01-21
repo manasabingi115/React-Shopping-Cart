@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-export default function CardsComponent({ data, addToCart }) {
+export default function CardsComponent({ data, addToCart, search }) {
   const [filterValue, setFilteredValue] = React.useState("");
 
   let filteredData = data;
@@ -10,6 +10,17 @@ export default function CardsComponent({ data, addToCart }) {
       (element) => element.category.name === filterValue
     );
   }
+  console.log(search);
+
+  let searchData = data;
+  searchData = data.filter((val) => {
+    if (val.name.toLowerCase().includes(search.toLowerCase())) {
+      return val;
+    }
+  });
+  console.log(searchData);
+
+  // const filteredNewData = [{ ...filteredData } || { ...searchData }];
 
   return (
     <div>
@@ -51,7 +62,7 @@ export default function CardsComponent({ data, addToCart }) {
       <br />
       <br />
       <div className="columns is-multiline">
-        {filteredData.map((data) => (
+        {(filteredData, searchData).map((data) => (
           <div
             className="column is-one-third is-flex is-justify-content-space-around"
             key={data.id}

@@ -4,19 +4,14 @@ import CardsComponent from "./Cards-component";
 import Cart from "./Cart";
 
 export default function App() {
-  const [search, setSearch] = React.useState([]);
+  const [search, setSearch] = React.useState("");
   const [data, setData] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
   const [showCart, setShowCart] = React.useState(false);
 
-  let searchData = { data };
-  searchData = data.filter((val) => {
-    if (search === "") {
-      return val;
-    } else if (val.name.toLowerCase().includes(search.toLowerCase())) {
-      return val;
-    }
-  });
+  // React.useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
 
   const addToCart = (item) => {
     const newCartItems = [...cartItems, item];
@@ -78,6 +73,7 @@ export default function App() {
           key={data.id}
           value={search}
           addToCart={addToCart}
+          search={search}
         />
       )}
     </div>
