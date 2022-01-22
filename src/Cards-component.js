@@ -15,17 +15,6 @@ export default function CardsComponent({ data, addToCart, search }) {
       val.name.toLowerCase().includes(search.toLowerCase())
     );
   }
-  console.log(search);
-
-  // let searchData = data;
-  // searchData = data.filter((val) => {
-  //   if (val.name.toLowerCase().includes(search.toLowerCase())) {
-  //     return val;
-  //   }
-  // });
-  // console.log(searchData);
-
-  // const filteredNewData = [{ ...filteredData } || { ...searchData }];
 
   return (
     <div>

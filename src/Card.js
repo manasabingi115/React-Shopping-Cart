@@ -1,22 +1,17 @@
 import React from "react";
 
 export default function Card({ data, addToCart }) {
-  const [buttonValue, setButtonValue] = React.useState(true);
+  const [cartButton, setCartButton] = React.useState(true);
 
   function Add() {
-    // if (data.quantity === "1") {
     addToCart(data.id, (data.addedCount || 0) + data.quantity);
-    // } else if (data.quantity === "0.5") {
-    // addToCart(data.id, (data.addedCount || 0) + 0.5);
-    // }
   }
-  // console.log(data[0].quantity);
 
   function Substract() {
     addToCart(data.id, (data.addedCount || 0) - data.quantity);
     console.log(data.addedCount);
     if (data.addedCount === 0) {
-      setButtonValue(true);
+      setCartButton(true);
     } else {
     }
   }
@@ -37,15 +32,15 @@ export default function Card({ data, addToCart }) {
     );
   }
 
-  const boolean = () => {
-    setButtonValue(false);
+  const itemQuantity = () => {
+    setCartButton(false);
     addToCart(data.id, data.addedCount || data.quantity);
   };
   function Button() {
     return (
       <div>
         <button
-          onClick={boolean}
+          onClick={itemQuantity}
           style={{ width: "170px" }}
           className="btn btn-primary "
         >
@@ -95,7 +90,7 @@ export default function Card({ data, addToCart }) {
           <Price />
           <br />
           <h4 className="subtitle is-6">
-            {buttonValue ? (
+            {cartButton ? (
               <Quantity />
             ) : (
               <p style={{ color: "white" }}>price</p>
