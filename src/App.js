@@ -37,7 +37,11 @@ export default function App() {
     <div className="App container">
       <div className="header">
         <h1
-          style={{ color: "green", fontSize: "40px", fontWeight: "bolder" }}
+          style={{
+            color: "green",
+            fontSize: "40px",
+            fontWeight: "bolder"
+          }}
           onClick={() => setShowCart(false)}
         >
           Veggy
