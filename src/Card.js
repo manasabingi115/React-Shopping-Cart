@@ -39,7 +39,7 @@ export default function Card({ data, addToCart }) {
 
   const boolean = () => {
     setButtonValue(false);
-    addToCart(data.id, data.addedCount || 1);
+    addToCart(data.id, data.addedCount || data.quantity);
   };
   function Button() {
     return (
