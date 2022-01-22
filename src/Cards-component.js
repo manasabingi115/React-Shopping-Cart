@@ -15,13 +15,17 @@ export default function CardsComponent({ data, addToCart, search }) {
       val.name.toLowerCase().includes(search.toLowerCase())
     );
   }
-
+  // `${filterValue === "all" ? "selected-button" : ""} filter-button`;
   return (
     <div>
       <div className="filter-buttons">
         <button
-          onClick={() => setFilteredValue("")}
-          className="all"
+          onClick={() => {
+            setFilteredValue("");
+          }}
+          className={`filter-button ${
+            filterValue === "" ? "selected-button" : ""
+          }`}
           type="submit"
           value="search"
         >
@@ -29,7 +33,9 @@ export default function CardsComponent({ data, addToCart, search }) {
         </button>
         <button
           onClick={() => setFilteredValue("vegetable")}
-          className="vegetable"
+          className={`filter-button ${
+            filterValue === "vegetable" ? "selected-button" : ""
+          }`}
           type="submit"
           value="search"
         >
@@ -37,7 +43,9 @@ export default function CardsComponent({ data, addToCart, search }) {
         </button>
         <button
           onClick={() => setFilteredValue("fruit")}
-          className="fruit"
+          className={`filter-button ${
+            filterValue === "fruit" ? "selected-button" : ""
+          }`}
           type="submit"
           value="search"
         >
@@ -46,7 +54,9 @@ export default function CardsComponent({ data, addToCart, search }) {
 
         <button
           onClick={() => setFilteredValue("nuts")}
-          className="nuts"
+          className={`filter-button ${
+            filterValue === "nuts" ? "selected-button" : ""
+          }`}
           type="submit"
           value="search"
         >

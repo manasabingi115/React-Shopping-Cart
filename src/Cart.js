@@ -2,7 +2,7 @@ import Card from "./Card";
 
 export default function Cart({ cartItems, addToCart }) {
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <div className="columns is-multiline">
         {cartItems.map((data) => (
           <div
@@ -19,7 +19,6 @@ export default function Cart({ cartItems, addToCart }) {
           style={{
             width: "85%",
             height: "50px",
-            marginLeft: "60px",
             backgroundColor: "rgb(252, 123, 36)",
             fontSize: "20px"
           }}
