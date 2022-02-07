@@ -14,6 +14,7 @@ body {
 }
 h1 {
   margin-left: -70px;
+  cursor: pointer;
 }
 .input {
   border: 1px solid green;
@@ -30,22 +31,13 @@ form {
   margin-left: 100px;
 }
 
-.search-button,
 button {
   height: 35px;
   color: white;
   background-color: green;
   border: none;
-  /* width: 100px; */
+  cursor: pointer;
   font-size: 17px;
-}
-.vegetable {
-  /* width: 140px; */
-  margin-left: 12px;
-  margin-right: 12px;
-}
-.fruit {
-  margin-right: 12px;
 }
 
 .selected-button {
@@ -57,29 +49,26 @@ button {
   margin: 5px 5px;
   padding: 5px 15px 10px 15px;
 }
-.all:hover {
-  background-color: rgb(2, 173, 2);
-}
-.vegetable:hover {
-  background-color: rgb(2, 173, 2);
-}
-.fruit:hover {
-  background-color: rgb(2, 173, 2);
-}
-.nuts:hover {
-  background-color: rgb(2, 173, 2);
-}
 
 .filter-buttons {
   display: flex;
   justify-content: center;
-  /* margin-right: -160px; */
 }
 .search-button {
   margin-left: -5px;
   z-index: 1;
   border-radius: 5px;
-  padding: 5px 10px 10px 15px;
+  padding: 10px 10px 8px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 50px;
+  color: white;
+  background-color: green;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
 }
 .header {
   display: flex;
@@ -92,6 +81,7 @@ button {
 .cart-container {
   display: flex;
   margin-left: 100px;
+  cursor: pointer;
 }
 .cart {
   height: 23px;

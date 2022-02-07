@@ -9,7 +9,6 @@ export default function Card({ data, addToCart }) {
 
   function Substract() {
     addToCart(data.id, (data.addedCount || 0) - data.quantity);
-    console.log(data.addedCount);
     if (data.addedCount === 0) {
       setCartButton(true);
     } else {

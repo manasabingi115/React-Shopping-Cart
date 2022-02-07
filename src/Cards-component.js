@@ -15,7 +15,6 @@ export default function CardsComponent({ data, addToCart, search }) {
       val.name.toLowerCase().includes(search.toLowerCase())
     );
   }
-  // `${filterValue === "all" ? "selected-button" : ""} filter-button`;
   return (
     <div>
       <div className="filter-buttons">

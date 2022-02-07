@@ -2,6 +2,7 @@ import "./styles.css";
 import React from "react";
 import CardsComponent from "./Cards-component";
 import Cart from "./Cart";
+import { FaSearch } from "react-icons/fa";
 
 export default function App() {
   const [search, setSearch] = React.useState("");
@@ -13,7 +14,6 @@ export default function App() {
     const addedItemId = data.findIndex((el) => el.id === id);
     newData[addedItemId].addedCount = count;
     setData(newData);
-    console.log(newData);
   };
 
   React.useEffect(() => {
@@ -56,9 +56,7 @@ export default function App() {
               placeholder="Search for vegetable, fruit, nuts"
               onChange={(e) => setSearch(e.target.value)}
             ></input>
-            <button className="search-button" type="submit" value="search">
-              search
-            </button>
+            <FaSearch className="search-button" />
           </form>
         </div>
         <div className="cart-container" onClick={() => setShowCart(true)}>
